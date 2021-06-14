@@ -1,0 +1,157 @@
+<html>
+    <header>
+        <title>edCrumble Google Calendar Plugin</title>
+        <link href="style.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    </header>
+    <body>
+        <div id="modal_box_google_calendar" class = "modal_target">
+            <button id="authorize_button" class="authButton">Log in</button>
+            <button id="signout_button" class="authButton">Sign Out</button>
+            <h1 id="title">
+                <img src="images/calendarLogo34.png" class="logo">
+                Google Calendar
+            </h1>
+            <div id="content">
+                <div id ="tool_selector">
+                    <div class="tool_select" id="exportmode">Exporter</div><div class="tool_select" id="importmode">Importer</div>
+                </div>
+                <div id="functionality">
+                    <select name="selector" id="calendars_selector"></select>
+                    <label id="chlabel"><input type="checkbox" id="createCal"> Create calendar from project</label><br>
+                    <button id="add_event" class="toolButton">Export</button>
+                    <button id="get_event" class="toolButton">Import</button>
+                    <button id="help_button" class="toolButton">Copy tasks template</button>
+                    <iframe id="my_iframe" style="display:none;"></iframe>
+                </div>
+                <div id="warning">
+                    Warning: Your project activities will be reconstructed or replaced from the imported data, you will loose the current configuration.
+                </div>
+            </div>
+        </div>
+        <script>
+            //database
+            var DB = {
+                events_to_export:[],
+                events_to_import:[],
+                calendars:[],
+                json:{}
+            };
+
+            fetch("src/Test.json").then(response => response.json()).then(
+                function(data) { 
+                    DB.json = data;
+                    DB.events_to_export = data.itemsList;
+                }
+            );
+
+            // Client ID and API key from the Developer Console
+            var CLIENT_ID = '475729935220-tsajkj99tpnvm1e1u0klct6rk91rk6q6.apps.googleusercontent.com';
+            var API_KEY = 'AIzaSyB1dK6kr6izrRGmHje2G6B0b0MCVEweS7M';
+
+            // Array of API discovery doc URLs for APIs used by the quickstart
+            var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+
+            // Authorization scopes required by the API; multiple scopes can be
+            // included, separated by spaces.
+            var SCOPES = "https://www.googleapis.com/auth/calendar";
+
+            var authorizeButton = document.querySelector('#authorize_button');
+            var signoutButton = document.querySelector('#signout_button');
+            var add_button = document.querySelector("#add_event");
+            var import_button = document.querySelector("#get_event");
+            var selector = document.querySelector("#calendars_selector");
+            import_button.style.display = "none";
+            /**
+             *  On load, called to load the auth2 library and API client library.
+             */
+            function handleClientLoad() {
+            gapi.load('client:auth2', initClient);
+            }
+
+            /**
+             *  Initializes the API client library and sets up sign-in state
+             *  listeners.
+             */
+            function initClient() {
+            gapi.client.init({
+                apiKey: API_KEY,
+                clientId: CLIENT_ID,
+                discoveryDocs: DISCOVERY_DOCS,
+                scope: SCOPES
+            }).then(function () {
+                // Listen for sign-in state changes.
+                gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+                // Handle the initial sign-in state.
+                updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                authorizeButton.onclick = handleAuthClick;
+                signoutButton.onclick = handleSignoutClick;
+            }, function(error) {
+                console.log(JSON.stringify(error, null, 2));
+            });
+            }
+
+            function add_selectorOption(innerText, value){
+                var option = document.createElement("option");
+                option.innerText = innerText;
+                option.value = value;
+                selector.appendChild(option);
+            };
+
+            function init_selector(){
+                var soptions = document.querySelectorAll('option');
+                soptions.forEach(o => o.remove());
+                var request = gapi.client.calendar.calendarList.list();
+                request.execute(function(response){
+                    DB.calendars = response.result.items;
+                    for(var i in DB.calendars){
+                     add_selectorOption(DB.calendars[i].summary, i);
+                    };
+                    DB.timeZone = DB.calendars[0].timeZone;
+                });
+            }
+
+            /**
+             *  Called when the signed in status changes, to update the UI
+             *  appropriately. After a sign-in, the API is called.
+             */
+            function updateSigninStatus(isSignedIn) {
+            if (isSignedIn) {
+                authorizeButton.style.display = 'none';
+                document.querySelector("#content").style.display = "block";
+                signoutButton.style.display = '';
+                init_selector();
+                if(selector)
+                    selector.style.display = "";
+            } else {
+                authorizeButton.style.display = '';
+                document.querySelector("#content").style.display = "none";
+                signoutButton.style.display = 'none';
+                if(selector)
+                    selector.style.display = "none";
+            }
+            }
+
+            /**
+             *  Sign in the user upon button click.
+             */
+            function handleAuthClick(event) {
+            gapi.auth2.getAuthInstance().signIn();
+            }
+
+            /**
+             *  Sign out the user upon button click.
+             */
+            function handleSignoutClick(event) {
+            gapi.auth2.getAuthInstance().signOut();
+            }
+        </script>
+        <script async defer src="https://apis.google.com/js/api.js"
+            onload="this.onload=function(){};handleClientLoad()"
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
+        </script>
+        <script src="src/manager.js"></script>
+    </body>
+</html>

@@ -1,0 +1,226 @@
+﻿{
+    "version": 7,
+    "designTitle": "Test",
+    "description": "Explicar el primer tema.",
+    "evaluation": "Presentar análisis.",
+    "experience": "Dar la bienvenida al curso.",
+    "objectivesList": [
+        "objective2",
+        "objective3"
+    ],
+    "students": "30",
+    "startDate": "2021-01-04T23:00:00.000Z",
+    "endDate": "2021-07-05T21:59:59.000Z",
+    "topic": "1",
+    "educationalLevel": "1",
+    "last_resource_id": 0,
+    "last_item_id": 4,
+    "last_mooc_id": 0,
+    "DPList": [],
+    "resourcesList": {},
+    "moocsList": {},
+    "itemsList": [
+        {
+            "id": 0,
+            "title": "Homework: out_class",
+            "content": "Homework: out_class",
+            "start": "2021-05-04T16:30:27+02:00",
+            "end": "2021-05-04T18:30:00+02:00",
+            "group": 2,
+            "className": "out",
+            "objectives": [
+                "1",
+                "1",
+                "1"
+            ],
+            "visibleFrameTemplate": "",
+            "tasks": [
+                {
+                    "resources": [],
+                    "students_group": 2,
+                    "min": "119.5",
+                    "type": 1,
+                    "student_role": "1",
+                    "teacher_role": "2",
+                    "graded": "1",
+                    "description": "Trabajo sobre el temario de la próxima sesión.",
+                    "FC": "1",
+                    "PBL": "1",
+                    "DP": "1"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "title": "Class 2: in_class",
+            "content": "Class 2: in_class",
+            "start": "2021-05-06T12:30:00+02:00",
+            "end": "2021-05-06T14:30:00+02:00",
+            "group": 1,
+            "className": "in",
+            "objectives": [
+                "1",
+                "1",
+                "1"
+            ],
+            "visibleFrameTemplate": "",
+            "tasks": [
+                {
+                    "resources": [],
+                    "students_group": 2,
+                    "min": "1",
+                    "type": 1,
+                    "student_role": "1",
+                    "teacher_role": "3",
+                    "graded": "1",
+                    "description": "",
+                    "FC": "1",
+                    "PBL": "1",
+                    "DP": "1"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Class 1: in_class",
+            "content": "Class 1: in_class",
+            "start": "2021-05-04T06:30:00.000Z",
+            "end": "2021-05-04T08:30:00.000Z",
+            "group": 1,
+            "className": "in",
+            "objectives": [
+                "1",
+                "1",
+                "1"
+            ],
+            "visibleFrameTemplate": "",
+            "tasks": [
+                {
+                    "resources": [],
+                    "students_group": 2,
+                    "min": "20",
+                    "type": 1,
+                    "student_role": "3",
+                    "teacher_role": "3",
+                    "graded": "1",
+                    "description": "Bienvenida.",
+                    "FC": "1",
+                    "PBL": "1",
+                    "DP": "1"
+                },
+                {
+                    "resources": [],
+                    "students_group": 2,
+                    "min": "40",
+                    "type": 3,
+                    "student_role": "1",
+                    "teacher_role": "3",
+                    "graded": "1",
+                    "description": "Lectura.",
+                    "FC": "1",
+                    "PBL": "1",
+                    "DP": "1"
+                },
+                {
+                    "resources": [],
+                    "students_group": 2,
+                    "min": "60",
+                    "type": 6,
+                    "student_role": "1",
+                    "teacher_role": "3",
+                    "graded": "3",
+                    "description": "Test sobre la lectura.",
+                    "FC": "1",
+                    "PBL": "1",
+                    "DP": "1"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Homework: out_class",
+            "content": "Homework: out_class",
+            "start": "2021-05-06T16:30:00+02:00",
+            "end": "2021-05-06T18:30:00+02:00",
+            "group": 2,
+            "className": "out",
+            "objectives": [
+                "1",
+                "1",
+                "1"
+            ],
+            "visibleFrameTemplate": "",
+            "tasks": [
+                {
+                    "resources": [],
+                    "students_group": 2,
+                    "min": "1",
+                    "type": 1,
+                    "student_role": "1",
+                    "teacher_role": "3",
+                    "graded": "1",
+                    "description": "",
+                    "FC": "1",
+                    "PBL": "1",
+                    "DP": "1"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Extra class: in_class",
+            "content": "Extra class: in_class",
+            "start": "2021-05-05T10:30:00+02:00",
+            "end": "2021-05-05T12:30:00+02:00",
+            "group": 1,
+            "className": "in",
+            "objectives": [
+                "1",
+                "1",
+                "1"
+            ],
+            "visibleFrameTemplate": "",
+            "tasks": [
+                {
+                    "resources": [],
+                    "students_group": 2,
+                    "min": "20",
+                    "type": 1,
+                    "student_role": "3",
+                    "teacher_role": "3",
+                    "graded": "1",
+                    "description": "Bienvenida.",
+                    "FC": "1",
+                    "PBL": "1",
+                    "DP": "1"
+                },
+                {
+                    "resources": [],
+                    "students_group": 2,
+                    "min": "40",
+                    "type": 3,
+                    "student_role": "1",
+                    "teacher_role": "3",
+                    "graded": "1",
+                    "description": "Lectura.",
+                    "FC": "1",
+                    "PBL": "1",
+                    "DP": "1"
+                },
+                {
+                    "resources": [],
+                    "students_group": 2,
+                    "min": "60",
+                    "type": 6,
+                    "student_role": "1",
+                    "teacher_role": "3",
+                    "graded": "3",
+                    "description": "Test sobre la lectura.",
+                    "FC": "1",
+                    "PBL": "1",
+                    "DP": "1"
+                }
+            ]
+        }
+    ]
+}

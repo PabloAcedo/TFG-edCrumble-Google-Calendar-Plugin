@@ -58,7 +58,7 @@ function exporter(){
         request.execute(function(calendar){
             DB.calendars.push(calendar);
             console.log(DB.calendars);
-            add_selectorOption(calendar.summary, DB.calendars.length);
+            add_selectorOption(calendar.summary, DB.calendars.length-1);
             that.add_event(DB.calendars.length-1);
             document.querySelector("body").style.cursor = "auto";
         });
@@ -101,6 +101,7 @@ function importer(){
     this.getEvents = function(){
         var selector = document.querySelector("#calendars_selector");
         if(!selector){console.log("There is not a selector"); return;}
+        console.log(selector.value);
         var id = DB.calendars[parseInt(selector.value)].id;
         var request = gapi.client.calendar.events.list({"calendarId":id});
         request.execute(function(response){
